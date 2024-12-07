@@ -9,7 +9,6 @@ public class SpaceshipController : MonoBehaviour
     [Tooltip("Left and Right Torque strength")]
     [SerializeField] float TorqueStrength = 1f;
 
-
     [SerializeField]
     InputAction move = new InputAction(type: InputActionType.Value, expectedControlType: nameof(Vector2));
 
