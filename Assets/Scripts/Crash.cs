@@ -12,8 +12,8 @@ public class Crash : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 velocity = rb.linearVelocity;
-        Debug.Log("Velocity: "+ velocity.magnitude);
-        if(velocity.magnitude > ImpactCapacity)
+        Debug.Log("Velocity: " + velocity.magnitude);
+        if (velocity.magnitude > ImpactCapacity)
         {
             Debug.Log("Crash!");
         }

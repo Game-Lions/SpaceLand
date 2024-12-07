@@ -31,7 +31,7 @@ public class SpaceshipController : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {   
+    {
         rb.AddForce(transform.up * ThrustStrength * move.ReadValue<Vector2>().y);
         rb.AddTorque(TorqueStrength * -move.ReadValue<Vector2>().x); // Around Z axis unless specified athorwise
     }
