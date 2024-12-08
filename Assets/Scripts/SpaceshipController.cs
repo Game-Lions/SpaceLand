@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class SpaceshipController : MonoBehaviour
 {
-    //private bool HitFloor = false;
     [Tooltip("Thrust strength")]
     [SerializeField] float ThrustStrength = 1f;
     [Tooltip("Left and Right Torque strength")]
@@ -13,6 +12,9 @@ public class SpaceshipController : MonoBehaviour
     InputAction move = new InputAction(type: InputActionType.Value, expectedControlType: nameof(Vector2));
 
     private Rigidbody2D rb;
+    public GameObject Thust;
+    public GameObject RightThrust;
+    public GameObject LeftThrust;
 
     void OnEnable()
     {
@@ -27,11 +29,33 @@ public class SpaceshipController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Thust.SetActive(false);
+        RightThrust.SetActive(false);
+        LeftThrust.SetActive(false);
     }
-    // Update is called once per frame
+
     void Update()
     {
-        rb.AddForce(transform.up * ThrustStrength * move.ReadValue<Vector2>().y);
-        rb.AddTorque(TorqueStrength * -move.ReadValue<Vector2>().x); // Around Z axis unless specified athorwise
+        Vector2 force = move.ReadValue<Vector2>();
+
+        // Bottom Thrust
+        Thust.SetActive(force.y > 0);
+
+        // Right Thrust
+        RightThrust.SetActive(force.x > 0);
+
+        // Left Thrust
+        LeftThrust.SetActive(force.x < 0);
+
+        // Apply forces and torque
+        if (force.y != 0)
+        {
+            rb.AddForce(transform.up * ThrustStrength * force.y);
+        }
+
+        if (force.x != 0)
+        {
+            rb.AddTorque(TorqueStrength * -force.x);
+        }
     }
 }
