@@ -28,11 +28,11 @@ public class Stopwatch : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "YouWin") 
+        if (SceneManager.GetActiveScene().name == "YouWin")
         {
             StopStopwatch();
         }
-        else if (isRunning )
+        else if (isRunning)
             TimeElapsed += Time.deltaTime;
         Debug.Log(TimeElapsed);
         timerText.text = $"Time: {TimeElapsed:F2}";
