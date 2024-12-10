@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Crash : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Crash : MonoBehaviour
     public float ImpactCapacity;
     public GameObject explosion;
     private float initialSpeed;
+    public string SceneToReloadOnCrash;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,5 +45,6 @@ public class Crash : MonoBehaviour
         explosion.transform.localScale = targetScale; // Ensure it ends exactly at maxScale
         explosion.SetActive(false);
         gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneToReloadOnCrash);
     }
 }
