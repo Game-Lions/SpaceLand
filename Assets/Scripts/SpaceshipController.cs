@@ -34,7 +34,7 @@ public class SpaceshipController : MonoBehaviour
         LeftThrust.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 force = move.ReadValue<Vector2>();
 

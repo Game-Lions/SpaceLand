@@ -636,8 +636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d1de9f19b412c45b82454b20cbc0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrustStrength: 0.6
-  TorqueStrength: 0.03
+  ThrustStrength: 3
+  TorqueStrength: 0.2
   move:
     m_Name: Move
     m_Type: 0
